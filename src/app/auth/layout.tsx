@@ -6,12 +6,12 @@ interface AuthLayoutProps {
 function AuthLayout({ children }: AuthLayoutProps) {
     return (
         <>
-        <div className='flex flex-col justify-center align-middle min-h-svh'>
-        <main>
-                {children}
-            </main>
-        </div>
-            
+            <div className='flex flex-col justify-center align-middle min-h-svh'>
+                <main>
+                    {children}
+                </main>
+            </div>
+
         </>
     )
 }
