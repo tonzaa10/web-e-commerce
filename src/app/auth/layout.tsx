@@ -1,9 +1,16 @@
 import React from 'react'
-
+import { authCheck } from '@/features/auths/db/auths'
+import { redirect } from 'next/navigation'
 interface AuthLayoutProps {
     children: React.ReactNode
 }
-function AuthLayout({ children }: AuthLayoutProps) {
+const AuthLayout = async ({ children }: AuthLayoutProps) => {
+    const user = await authCheck()
+    
+    if (user) {
+        redirect('/')
+    }
+
     return (
         <>
             <div className='flex flex-col justify-center align-middle min-h-svh'>
@@ -11,9 +18,7 @@ function AuthLayout({ children }: AuthLayoutProps) {
                     {children}
                 </main>
             </div>
-
         </>
     )
 }
-
 export default AuthLayout

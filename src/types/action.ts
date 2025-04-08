@@ -8,3 +8,5 @@ export const initialFormState: InitialFormState = {
     success: false,
     message: '',
 }
+
+export type ActionType = (_prevState: InitialFormState, formData: FormData) => Promise<InitialFormState>

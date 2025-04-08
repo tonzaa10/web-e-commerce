@@ -1,3 +1,4 @@
+import { signin } from './../db/auths';
 import { z } from 'zod';
 
 //Define Constants
@@ -76,5 +77,20 @@ export const signupSchema = z.object({
         path: ['confirmPassword'],
     }
 )
+
+
+// Main Signin Schema
+export const signinSchema = z.object({
+    email: z.string()
+        .email({ message: ERROR_MESSAGES.email.format })
+        .refine(
+            (email) => isValidEmailDomain(email),
+            { message: ERROR_MESSAGES.email.domain }
+        ),
+    password: passowrdSchema,
+})
+
+
+
 
 
