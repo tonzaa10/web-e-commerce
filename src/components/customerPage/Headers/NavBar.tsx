@@ -13,7 +13,7 @@ const NavBar = ({ user }: NavBarProps) => {
     <nav className='flex items-center gap-x-3'>
       {/*Mobile Navigation */}
       {user && <CartIcon />}
-      <MobileMenu />
+      <MobileMenu user={user} />
 
 
       {/*Desktop Navigation */}
