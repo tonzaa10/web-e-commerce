@@ -8,6 +8,7 @@ import { cookies, headers } from 'next/headers';
 import { UserStatus } from '@prisma/client';
 import { getUserById } from '@/features/users/db/users';
 import { use } from 'react';
+import { revalidateUserCache } from '@/features/users/db/cashe';
 
 
 
@@ -32,7 +33,6 @@ const gennerateJwtToken = async (userId: string) => {
         .setExpirationTime('30d') // Set the expiration time
         .sign(secret); // Sign the JWT with the secret key
 }
-
 
 // Function to set cookie token
 const setCookieToken = async (token: string) => {
@@ -86,6 +86,8 @@ export const signup = async (input: SignupInput) => {
         const token = await gennerateJwtToken(newUser.id)
         await setCookieToken(token)
 
+        revalidateUserCache(newUser.id)
+
 
     } catch (error) {
         console.error('Error signing up:', error);
@@ -95,9 +97,7 @@ export const signup = async (input: SignupInput) => {
     }
 }
 
-
 // Function to handle user signin
-
 export const signin = async (input: SignupInput) => {
     try {
         const { success, data, error } = signinSchema.safeParse(input)
