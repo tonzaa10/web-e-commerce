@@ -2,6 +2,10 @@ import { UserType } from '@/types/user'
 import MobileMenu from './MobileMenu'
 
 import CartIcon from './CartIcon'
+import { DesktopNavLink } from './NaveLink'
+import { Button } from '@/components/ui/button'
+import Link from 'next/link'
+import DesktopUserMenu from './DesktopUserMenu'
 
 interface NavBarProps {
   user: UserType | null
@@ -17,12 +21,14 @@ const NavBar = ({ user }: NavBarProps) => {
 
 
       {/*Desktop Navigation */}
-      <div className='hidden'>
-        <div>Desktop Menu</div>
+      <div className='hidden md:flex md:items-center'>
+        <DesktopNavLink />
         {user ? (
-          <div>Desktop User Menu</div>
+          <DesktopUserMenu user={user} />
         ) : (
-          <div>Go to signin button</div>
+          <Button asChild size='sm'>
+            <Link href='/auth/signin'>เข้าสู่ระบบ</Link>
+          </Button>
         )}
       </div>
     </nav>

@@ -10,6 +10,7 @@ const NAV_LINKS = [
     { title: 'ติดต่อเรา', href: '/contact' },
 ]
 
+//
 export const MobileNavLink = () => (
     <div className='flex flex-col gap-2 mt-2'>
         {NAV_LINKS.map((link, index) => (
@@ -21,4 +22,14 @@ export const MobileNavLink = () => (
         ))}
     </div>
 
+)
+
+export const DesktopNavLink = () => (
+    <div className='flex items-center gap-1'>
+        {NAV_LINKS.map((link, index) => (
+            <Button asChild variant='ghost'  size='sm' key={index}>
+                <Link href={link.href} className="flex items-center gap-2">{link.title}</Link>
+            </Button>
+        ))}
+    </div>
 )
