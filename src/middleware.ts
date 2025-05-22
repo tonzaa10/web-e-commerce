@@ -42,7 +42,8 @@ export const middleware = async (req: NextRequest) => {
 export const config = {
     matcher: [
         '/',
-        '/auth/:path*' // Check Auth
+        '/auth/:path*', // Check Auth
+        '/admin/:path*' // Check Admin
 
     ]
 }

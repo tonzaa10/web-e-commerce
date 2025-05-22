@@ -38,7 +38,7 @@ const MobileMenu = ({ user }: MobileMenuProps) => {
                                 <div className='mt-4 pb-4'>
                                     <Separator className='mb-4' />
                                     <Button variant='secondary' size='lg' className='w-full'>
-                                        <Link href='/amdin'>หลังบ้าน</Link>
+                                        <Link href='/admin'>หลังบ้าน</Link>
                                     </Button>
                                 </div>
                             )}
