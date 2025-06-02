@@ -8,7 +8,7 @@ export const useSignout = () => {
     const [isPanding, startTransition] = useTransition();
     const router = useRouter()
 
-    const handelSignout = () => {
+    const handleSignout = () => {
         startTransition(async () => {
             const result = await signoutAction()
             if(result.success) {
@@ -20,5 +20,5 @@ export const useSignout = () => {
         })
     }
 
-    return {isPanding, handelSignout}
+    return {isPanding, handleSignout}
 }

@@ -27,8 +27,8 @@ export const userSlidebar = () => {
     const context = useContext(SidebarContext)
 
     if (context === undefined) {
-        throw new Error('useSidebar must be used within a SidebarProvider')
-    }
+        throw new Error('useSidebar must be used with in a SidebarProvider')
+    } 
 
     return context
 }
